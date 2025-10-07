@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Services App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #00A693;
+            border-radius: 12px;
+        }
+        .rating-stars input {
+            display: none;
+        }
+        .rating-stars label {
+            cursor: pointer;
+            color: #ddd;
+        }
+        .rating-stars input:checked ~ label {
+            color: #ffd700;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-md mx-auto bg-white min-h-screen">
+        <!-- Header -->
+        <header class="p-4 flex justify-between items-center border-b">
+            <div class="flex items-center gap-2">
+                <span>Sector 4, Nerul</span>
+                <i class="bi bi-bell"></i>
+            </div>
+            <div class="w-8 h-8 bg-gray-200 rounded-full"></div>
+        </header>
+
+        <!-- Search Bar -->
+        <div class="p-4">
+            <div class="relative">
+                <i class="bi bi-search absolute left-3 top-3 text-gray-400"></i>
+                <input type="text" placeholder="Search for services..." class="w-full pl-10 pr-4 py-2 border rounded-lg">
+            </div>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="p-4">
+            <h2 class="text-lg font-semibold mb-4">Explore Services</h2>
+            <div class="grid grid-cols-4 gap-4">
+                <div class="text-center">
+                    <div class="service-icon mx-auto mb-2 flex items-center justify-center">
+                        <i class="bi bi-tools text-white text-xl"></i>
+                    </div>
+                    <span class="text-xs">Plumber</span>
+                </div>
+                <div class="text-center">
+                    <div class="service-icon mx-auto mb-2 flex items-center justify-center">
+                        <i class="bi bi-lightning text-white text-xl"></i>
+                    </div>
+                    <span class="text-xs">Electrician</span>
+                </div>
+                <div class="text-center">
+                    <div class="service-icon mx-auto mb-2 flex items-center justify-center">
+                        <i class="bi bi-car-front text-white text-xl"></i>
+                    </div>
+                    <span class="text-xs">Driver</span>
+                </div>
+                <div class="text-center">
+                    <div class="service-icon mx-auto mb-2 flex items-center justify-center">
+                        <i class="bi bi-house text-white text-xl"></i>
+                    </div>
+                    <span class="text-xs">Maid</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hot Deals -->
+        <div class="p-4">
+            <h2 class="text-lg font-semibold mb-4">Hot Deals Near You</h2>
+            <div class="flex gap-4 overflow-x-auto">
+                <div class="min-w-[200px] rounded-lg overflow-hidden shadow">
+                    <img src="https://source.unsplash.com/random/200x150/?pizza" alt="Pizza" class="w-full h-32 object-cover">
+                    <div class="p-2">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-semibold">Pizza House</h3>
+                            <span class="text-sm text-green-600">50% OFF</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <i class="bi bi-star-fill text-yellow-400"></i>
+                            <span class="ml-1">4.5</span>
+                            <span class="ml-2">₹250 for two</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="fixed bottom-0 left-0 right-0 bg-white border-t">
+            <div class="max-w-md mx-auto flex justify-between p-3">
+                <button class="flex flex-col items-center text-teal-600">
+                    <i class="bi bi-house"></i>
+                    <span class="text-xs">Home</span>
+                </button>
+                <button class="flex flex-col items-center text-gray-500">
+                    <i class="bi bi-cart"></i>
+                    <span class="text-xs">Market</span>
+                </button>
+                <button class="flex flex-col items-center text-gray-500">
+                    <i class="bi bi-tools"></i>
+                    <span class="text-xs">Service</span>
+                </button>
+                <button class="flex flex-col items-center text-gray-500">
+                    <i class="bi bi-tag"></i>
+                    <span class="text-xs">Offers</span>
+                </button>
+                <button class="flex flex-col items-center text-gray-500">
+                    <i class="bi bi-person"></i>
+                    <span class="text-xs">Profile</span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <script>
+        // Service Provider Booking Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click handlers for navigation
+            const navButtons = document.querySelectorAll('nav button');
+            navButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    navButtons.forEach(btn => btn.classList.remove('text-teal-600'));
+                    button.classList.add('text-teal-600');
+                });
+            });
+
+            // Add search functionality
+            const searchInput = document.querySelector('input[type="search"]');
+            searchInput?.addEventListener('input', function(e) {
+                // Implement search logic here
+                console.log('Searching for:', e.target.value);
+            });
+        });
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
